@@ -1,0 +1,83 @@
+openapi: "3.0.3"
+
+info:
+  title: Todo application
+  description: I should put a description here
+  version: 1.0.0
+
+servers:
+  - url: localhost:8080
+    description: Local
+
+# Routing
+paths:
+  /tasks:
+    get:
+      description: Returns all of the user's tasks
+      responses:
+        200:
+          description: OK
+          content:
+            application\json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Task"
+    post:
+      description: Create a new task
+      requestBody:
+        required: true
+        content:
+          application\json:
+            schema:
+              $ref: "#/components/schemas/Task"
+      responses:
+        200:
+          description: OK
+        400:
+          description: Validation errors were found
+  /tasks/{id}:
+    get:
+      description: Returns a task for the given ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 0
+      responses:
+        200:
+          description: OK
+          content:
+            application\json:
+              schema:
+                $ref: "#/components/schemas/Task"
+        404:
+          description: Task not found
+
+# Schemas
+components:
+  schemas:
+    Task:
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of this task
+        date_created:
+          type: string
+          format: date-time
+          description: The creation date of this task
+          example: "2021-01-30T23:59:59"
+        title:
+          type: string
+          description: The title of this task
+          minLength: 5
+          maxLength: 100
+        description:
+          type: string
+          description: The description of this task
+          minLength: 5
+          maxLength: 1000
