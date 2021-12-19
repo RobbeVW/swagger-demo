@@ -149,14 +149,16 @@
                                 ${project.basedir}/src/main/resources/openapi.yaml
                             </inputSpec>
                             <generatorName>spring</generatorName>
-<!--                            <apiPackage>be.robbevw.swaggerdemo.openapi.api</apiPackage>-->
-<!--                            <modelPackage>be.robbevw.swaggerdemo.openapi.model</modelPackage>-->
+                            <library>spring-boot</library>
+                            <apiPackage>be.robbevw.swaggerdemo.openapi.api</apiPackage>
+                            <modelPackage>be.robbevw.swaggerdemo.openapi.model</modelPackage>
                             <supportingFilesToGenerate>
                                 ApiUtil.java
                             </supportingFilesToGenerate>
                             <configOptions>
                                 <delegatePattern>true</delegatePattern>
                                 <dateLibrary>java8-localdatetime</dateLibrary>
+                                <interfaceOnly>true</interfaceOnly>
                                 <openApiNullable>false</openApiNullable>
                             </configOptions>
                         </configuration>

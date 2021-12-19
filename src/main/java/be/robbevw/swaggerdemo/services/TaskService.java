@@ -1,6 +1,6 @@
 package be.robbevw.swaggerdemo.services;
 
-import org.openapitools.model.Task;
+import be.robbevw.swaggerdemo.openapi.model.Task;
 
 import java.util.List;
 import java.util.Optional;

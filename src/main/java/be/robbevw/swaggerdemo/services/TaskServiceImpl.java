@@ -1,6 +1,6 @@
 package be.robbevw.swaggerdemo.services;
 
-import org.openapitools.model.Task;
+import be.robbevw.swaggerdemo.openapi.model.Task;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -31,6 +31,7 @@ class TaskServiceImpl implements TaskService {
                 .dateCreated(LocalDateTime.parse("2020-01-01T12:00"))
                 .description("I need to demonstrate OpenAPI to a group of people."));
     }
+
     @Override
     public List<Task> findAll() {
         return tasks;
